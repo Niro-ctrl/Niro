@@ -6,7 +6,7 @@
   <title>NIRO — AI · Enterprise Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ... The COMPLETE CSS from the section above goes here ... */
+    /* === 1. Base Variables & Reset === */
     :root{
       --bg:#0f172a; /* deep navy/charcoal */
       --accent-blue:#007bff;
@@ -33,57 +33,51 @@
       line-height:1.45;
     }
 
-    /* Container & layout */
+    /* === 2. Global Styles & Components === */
     .wrap{max-width:1200px;margin:40px auto;padding:32px}
+    h1{font-size:44px;margin:18px 0 14px;line-height:1.02}
+    h2{font-size:24px;margin-bottom:28px;font-weight:700}
+    p.lead{color:var(--muted);font-size:16px;margin:0 0 22px}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(0,123,255,0.12),rgba(40,167,69,0.08));color:var(--muted);font-weight:700;font-size:12px}
+    .section{margin-top:72px}
+    
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;transition:transform 0.2s, box-shadow 0.2s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(90deg,var(--accent-blue),#0066ff);color:white;box-shadow:0 6px 24px rgba(0,123,255,0.12);}
+    .btn-secondary{background:linear-gradient(90deg,var(--accent-green),#1ea339);color:white;box-shadow:0 6px 24px rgba(40,167,69,0.12);}
+
+    /* Header & Nav */
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
     .logo{display:flex;align-items:center;gap:14px}
     .logo-mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-green));
       box-shadow:0 6px 24px rgba(0,123,255,0.12), 0 2px 6px rgba(40,167,69,0.06);
       display:grid;place-items:center;font-weight:800;color:#041126;font-size:24px}
     .logo-text{font-weight:700;letter-spacing:0.6px;font-size:18px}
-
     nav{display:flex;gap:18px;align-items:center}
     nav a{color:var(--muted);text-decoration:none;font-weight:600;transition:color 0.2s}
     nav a:hover{color:var(--txt)}
 
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer;transition:transform 0.2s, box-shadow 0.2s}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{background:linear-gradient(90deg,var(--accent-blue),#0066ff);color:white;box-shadow:0 6px 24px rgba(0,123,255,0.12);}
-    .btn-secondary{background:linear-gradient(90deg,var(--accent-green),#1ea339);color:white;box-shadow:0 6px 24px rgba(40,167,69,0.12);}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
-
-    /* Hero */
+    /* Hero Section */
     .hero{display:grid;grid-template-columns:1fr 560px;gap:48px;align-items:center;padding:56px 28px;border-radius:20px;
       background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
       backdrop-filter: blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.03);
     }
-    .hero-left{max-width:680px}
-    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(0,123,255,0.12),rgba(40,167,69,0.08));color:var(--muted);font-weight:700;font-size:12px}
-    h1{font-size:44px;margin:18px 0 14px;line-height:1.02}
-    p.lead{color:var(--muted);font-size:16px;margin:0 0 22px}
     .cta-group{display:flex;gap:14px}
 
-    /* Right visual */
+    /* Right Visual */
     .hero-right{position:relative;height:420px;display:grid;place-items:center}
     .visual-card{width:520px;height:380px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow: 0 20px 60px rgba(2,6,23,0.6);position:relative;overflow:visible;display:grid;place-items:center}
-
-    /* 3D-ish data sphere using SVG */
-    .glow-lines{position:absolute;inset:0;pointer-events:none}
+    .orbit{position:absolute;border-radius:50%;box-shadow:0 0 18px rgba(0,123,255,0.12), 0 0 28px rgba(0,123,255,0.06) inset;opacity:0.22}
+    .orbit--1{width:440px;height:300px;left:40px;top:10px;transform:rotate(14deg)}
+    .orbit--2{width:300px;height:200px;left:120px;top:40px;transform:rotate(-10deg);opacity:0.26}
     svg.node{width:420px;height:320px;filter:drop-shadow(0 12px 30px rgba(0,123,255,0.06));}
     .node-line{stroke:rgba(0,123,255,0.14);stroke-width:1.4;mix-blend-mode:screen}
     .node-line.green{stroke:rgba(40,167,69,0.18)}
     .node-dot{fill:var(--accent-blue);stroke:rgba(255,255,255,0.04);stroke-width:1}
     .node-dot.green{fill:var(--accent-green)}
 
-    /* small animated orbits & particles */
-    .orbit{position:absolute;border-radius:50%;box-shadow:0 0 18px rgba(0,123,255,0.12), 0 0 28px rgba(0,123,255,0.06) inset;opacity:0.22}
-    .orbit--1{width:440px;height:300px;left:40px;top:10px;transform:rotate(14deg)}
-    .orbit--2{width:300px;height:200px;left:120px;top:40px;transform:rotate(-10deg);opacity:0.26}
-
-    /* Card grid */
-    .section{margin-top:72px}
-    .section-title{font-size:24px;margin-bottom:28px;font-weight:700}
+    /* Features Grid */
     .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .card-feature{
       background:linear-gradient(180deg,var(--glass),var(--glass-2));border-radius:var(--radius);padding:24px;
@@ -95,14 +89,12 @@
       box-shadow: 0 10px 30px rgba(0,123,255,0.05);
       border-color: rgba(0,123,255,0.2);
     }
-
     .card-feature .icon{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:20px;
       background:rgba(255,255,255,0.02);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
     }
     .icon-blue{color:var(--accent-blue);border:1px solid rgba(0,123,255,0.2);box-shadow:0 0 10px rgba(0,123,255,0.5)}
     .icon-green{color:var(--accent-green);border:1px solid rgba(40,167,69,0.2);box-shadow:0 0 10px rgba(40,167,69,0.5)}
-
     .card-feature h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-0.2px}
     .card-feature p{margin:0;color:var(--muted);font-size:14px}
     
@@ -168,6 +160,74 @@
     .footer-links a{color:var(--muted);text-decoration:none;transition:color 0.2s}
     .footer-links a:hover{color:var(--accent-blue)}
     .legal{color:var(--muted)}
+
+    /* === 3. RESPONSIVENESS (Media Queries) === */
+
+    /* Tablet (Max-width 1024px) */
+    @media (max-width: 1024px) {
+      .wrap { padding: 20px; margin: 20px auto; }
+      
+      /* Hero: Stack layout */
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 20px;
+      }
+      .hero-left { max-width: 100%; }
+      h1 { font-size: 38px; }
+      
+      /* Visual: Reduce size/hide subtle elements */
+      .hero-right { height: 320px; }
+      .visual-card { width: 100%; height: 100%; max-width: 480px; }
+      svg.node { width: 90%; height: auto; }
+      .orbit--1, .orbit--2 { display: none; } /* Hide complex orbits */
+
+      /* Features Grid: 2 columns */
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+      /* Architecture Flow: Stack/Simplify */
+      .flow-diagram { flex-wrap: wrap; justify-content: center; padding: 30px; }
+      .flow-step { width: 45%; margin-bottom: 20px; }
+      .flow-arrow { width: 20px; transform: rotate(90deg); margin: 10px 0; }
+      .flow-arrow::after { transform: rotate(-90deg); right: -12px; top: -3px; }
+      .flow-step:nth-child(even) { margin-left: 10%; } /* Offset for a staggered look */
+      .flow-step:last-child { margin-bottom: 0; }
+    }
+
+    /* Mobile (Max-width 768px) */
+    @media (max-width: 768px) {
+      /* Header: Stack navigation/hide less important links */
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 15px; }
+      nav a { display: none; } /* Hide internal nav links on mobile */
+
+      /* Hero */
+      h1 { font-size: 30px; margin: 10px 0 10px; }
+      .cta-group { flex-direction: column; gap: 10px; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-right { height: 250px; }
+
+      /* Features Grid: Single column */
+      .cards-grid { grid-template-columns: 1fr; }
+      .card-feature { min-height: auto; }
+
+      /* Stats: Stack vertically */
+      .stats-grid { flex-direction: column; gap: 30px; padding: 30px 0; }
+      .stat-item { padding: 0 10px; }
+      .stat-value { font-size: 44px; }
+      .stat-separator { display: none; } /* Hide vertical separator lines */
+      
+      /* Architecture Flow: Stack vertically (full width) */
+      .flow-step { width: 100%; margin-bottom: 10px; }
+      .flow-arrow { width: 2px; height: 30px; transform: rotate(0deg); margin: 10px auto; }
+      .flow-arrow::after { transform: rotate(90deg); right: -3px; top: 22px; }
+      .flow-step:nth-child(even) { margin-left: 0; } 
+      
+      /* Footer */
+      .footer-content { flex-direction: column; gap: 15px; }
+      .footer-links { flex-direction: column; align-items: center; gap: 10px; }
+      .legal { order: 3; }
+    }
   </style>
 </head>
 <body>
@@ -182,8 +242,7 @@
         <a href="#features">Features</a>
         <a href="#stats">Performance</a>
         <a href="#architecture">Platform</a>
-        <button class="btn btn-ghost">Log In</button>
-      </nav>
+        <button class="btn btn-primary">Request Demo</button> </nav>
     </header>
 
     <section class="hero">
@@ -192,7 +251,6 @@
         <h1>AI-Driven Enterprise Intelligence.</h1>
         <p class="lead">Transforming complex, disparate data streams into actionable, predictive insights at scale with next-generation machine learning algorithms.</p>
         <div class="cta-group">
-          <button class="btn btn-primary">Request Demo</button>
           <button class="btn btn-secondary">Explore API</button>
         </div>
       </div>
@@ -229,7 +287,7 @@
     </section>
 
     <section class="section" id="features">
-      <h2 class="section-title">Core Capabilities</h2>
+      <h2>Core Capabilities</h2>
       <div class="cards-grid">
         
         <div class="card-feature">
@@ -283,7 +341,7 @@
     </section>
 
     <section class="architecture-section" id="architecture">
-      <h2 class="section-title">The NIRO AI Pipeline</h2>
+      <h2>The NIRO AI Pipeline</h2>
       <div class="flow-diagram">
         
         <div class="flow-step">
